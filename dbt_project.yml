@@ -36,3 +36,6 @@ models:
     # Applies to all files under models/example/
     example:
       materialized: view
+  postgres_to_s3:
+    postgres_datalake:
+      materialized: table
