@@ -6,7 +6,7 @@
 }}
 
 with postgres_customer_ as (
-    select * from demo_postgres_aws.burst_bank.customer
+     select * from {{ source('demo_postgres_aws', 'customer')}}
 )
-
+ 
 select * from postgres_customer_
