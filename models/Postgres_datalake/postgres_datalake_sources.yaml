@@ -3,7 +3,7 @@ version: 2
 sources:
   - name: demo_postgres_aws
     description: Burst Bank data in Postgres.
-    database: demo_postgres_aws
+    database: onsite_galaxy_postgres
     schema: burst_bank
     freshness: # default freshness
       warn_after: {count: 700, period: day}
