@@ -1,7 +1,7 @@
 version: 2
 
 models:
-    - name: incremental_update
+    - name: dl_customer_consume
       description: "Testing Incremental Updates"
       columns:
           - name: custkey
