@@ -35,6 +35,10 @@ with
             fico
         from {{ ref("postgres_burst_bank_customer_snapshot") }}
         where dbt_valid_to is null
+        {% if is_incremental() %}
+            -- this filter will only be applied on an incremental run
+            and custkey not in  (select custkey from {{ this }}) 
+        {% endif %}
 
     )
 
