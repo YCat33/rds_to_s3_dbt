@@ -1,9 +1,10 @@
 {{
     config(
-        materialized="incremental",
-        unique_key="custkey",
-        inceremental_strategy="merge",
-        on_schema_change="sync_all_columns",
+        materialized = 'incremental',
+        incremental_strategy = 'merge',
+        unique_key= 'custkey',
+        inceremental_strategy= 'merge',
+        on_schema_change= 'sync_all_columns',
         properties={
             "format": "'PARQUET'",
             "type": "'ICEBERG'",
@@ -13,8 +14,9 @@
     )
 }}
 
+
 with
-    dedup_snapshot as (
+    snapshot_data as (
         select
             custkey,
             first_name,
@@ -32,19 +34,12 @@ with
             ssn,
             paycheck_dd,
             estimated_income,
-            fico
-        from {{ ref("postgres_burst_bank_customer_snapshot") }}
-        where dbt_valid_to is null
+            fico,
+            dbt_valid_from
+        from {{ ref('postgres_burst_bank_customer_snapshot') }}
         {% if is_incremental() %}
             -- this filter will only be applied on an incremental run
-            and custkey not in  (select custkey from {{ this }}) 
+            where dbt_valid_from > (select max(dbt_valid_from) from {{ this }})
         {% endif %}
-
     )
-
-select *
-from dedup_snapshot
-
-
-
-
+    select * from snapshot_data
