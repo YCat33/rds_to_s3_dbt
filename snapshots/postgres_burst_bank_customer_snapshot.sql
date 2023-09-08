@@ -9,7 +9,7 @@
       check_cols='all',
       properties={
             "format": "'PARQUET'",
-            "type": "'ICEBERG'"
+            "type": "'ICEBERG'",
         },
     )
 }}
