@@ -1,6 +1,8 @@
-Welcome to your new dbt project!
 
 ## How to migrate from database to data lake with dbt Cloud and Starburst Galaxy
+
+<img width="817" alt="image" src="https://github.com/YCat33/rds_to_s3_dbt/assets/115039992/719e0472-9b8f-4751-ba22-9f272b815651">
+
 
 With the advent of modern table formats such as Apache Iceberg that provide data warehousing capabilities on object storage, there has been a huge groundswell around the concept of a modern data lake. However, the process of actually standing up a data lake can be quite daunting if you don’t know where to start. 
 
