@@ -3,7 +3,6 @@
         materialized = 'incremental',
         incremental_strategy = 'merge',
         unique_key= 'custkey',
-        inceremental_strategy= 'merge',
         on_schema_change= 'sync_all_columns',
         properties={
             "format": "'PARQUET'",
